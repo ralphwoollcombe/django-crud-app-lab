@@ -1,0 +1,33 @@
+{% extends 'base.html' %} {% load static %} {% block head %}
+<link
+  rel="stylesheet"
+  href="{% static 'css/cats/cat-index.css' %}"
+/>
+{% endblock %} {% block content %}
+
+<section class="page-header">
+  <h1>Community List</h1>
+ 
+</section>
+
+<section class="card-container">
+  {% for person in people %}
+  <div class="card">
+    <div class="card-content">
+      <div class="card-img-container">
+        <img
+          src=""
+          alt=""
+        />
+      </div>
+      <h2 class="card-title">{{ person.name }}</h2>
+        <p>{{ person.location}}</p>
+        <p>{{ person.category }}</p>
+        <p>{{ person.subcategory }}</p>
+      <p><small>{{ person.description }}</small></p>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+
+{% endblock %}
