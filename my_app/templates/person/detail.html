@@ -1,0 +1,15 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/people/person-detail.css' %}" />
+{% endblock %} 
+{% block content %}
+<section class="person-container">
+  <div class="person-img">
+    <img src="{%%}" alt="" />
+  </div>
+  <div class="person-details">
+    <h1>{{ person.name }}</h1>
+  </div>
+</section>
+{% endblock %}
