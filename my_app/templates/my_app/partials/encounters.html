@@ -1,0 +1,35 @@
+{% load static %}
+<section class="encounters">
+  <h3>Add an Encounter</h3>
+  <form
+    action="{% url 'add-encounter' person.id %}"
+    method="post"
+    class="subsection-content"
+  >
+    {% csrf_token %} {{ encounter_form.as_p }}
+    <button type="submit" class="btn submit">Add Encounter</button>
+  </form>
+  <h3>Past Encounters</h3>
+  {% if person.encounter_set.all.count %}
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Meal</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for meet in person.encounter_set.all %}
+      <tr>
+        <td>{{meet.date}}</td>
+        <td>{{meet.location}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <div class="subsection-content">
+    <p>⚠️ {{person.name}} needs your company!</p>
+  </div>
+  {% endif %}
+</section>

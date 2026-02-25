@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% load static %} {% block head %}
+<link rel="t" href="" />
+{% endblock %} {% block content %}
+<section class="person-container">
+  <div class="person-image">
+    <img src="" alt="" />
+  </div>
+  <div class="person-details">
+    <h1>{{ person.name }}</h1>
+    <h2>Lives in {{ person.location }}</h2>
+    <!-- <h3>Shared interests: </h3> 
+    <ul>
+    {% for interest in person.interests %}
+      <li> {{ interest.name }} </li>
+    {% endfor %}
+    </ul> -->
+    <p>{{ person.description }}</p>
+    <div class="person-actions">
+      <a href="{% url 'person-update' person.id %}" class="btn warn">Edit</a>
+      <a href="{% url 'person-delete' person.id %}" class="btn danger">Delete</a>
+    </div>
+  </div>
+</section>
+{% include 'my_app/partials/encounters.html' %}
+
+{% endblock %}

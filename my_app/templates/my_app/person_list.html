@@ -11,9 +11,9 @@
 </section>
 
 <section class="card-container">
-  {% for person in people %}
+  {% for person in person_list %}
   <div class="card">
-    <a href="{% url 'person-index' person.id }">
+    <a href="{% url 'person-detail' person.id %}">
     <div class="card-content">
       <div class="card-img-container">
         <img
@@ -24,7 +24,6 @@
       <h2 class="card-title">{{ person.name }}</h2>
         <p>{{ person.location}}</p>
         <p>{{ person.category }}</p>
-        <p>{{ person.subcategory }}</p>
       <p><small>{{ person.description }}</small></p>
     </div>
   </div>
