@@ -8,11 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" type="image/png" href="" />
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
-    <link
-        rel="shortcut icon"
-        type="image/png"
-        href="{% static 'images/splash.svg' %}"
-    />
     <title>Community</title>
     {% block head %} 
     {% endblock %}
@@ -25,12 +20,27 @@
         </a>
       </div>
       <nav>
-        <ul>
-            <li><a href="{% url 'person-index' %}">Community</a></li>
-            <li><a href="{% url 'person-create' %}">Add Person</a></li>
-            <li><a href="{% url 'about' %}">About</a></li>
-        </ul>
-      </nav>
+  <ul>
+    {% if user.is_authenticated %}
+      <li><a href="{% url 'person-index' %}">All People</a></li>
+      <li><a href="{% url 'interest-index' %}">All Interests</a></li>
+      <li><a href="{% url 'person-create' %}">Add Person</a></li>
+      <li><a href="{% url 'interest-create' %}">Add Interest</a></li>
+      <li><a href="{% url 'about' %}">About</a></li>
+      <li>
+        <form id="logout-form" method="post" action="{% url 'logout' %}">
+          {% csrf_token %}
+          <button type="submit">Log out</button>
+        </form>
+      </li>
+    {% else %}
+      <li><a href="{% url 'about' %}">About</a></li>
+      <li><a href="{% url 'home' %}">Login</a></li>
+      <li><a href="{% url 'signup' %}">Sign Up</a></li>
+      {% endif %}
+      </ul>
+    </nav>
+
     </header>
     <main>
      {% block content %} 

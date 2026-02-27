@@ -1,0 +1,40 @@
+{% load static %}
+<section class=" interests">
+  <div class="subsection-title">
+    <h2>Interests</h2>
+  </div>
+  <!-- displaying a person's  interests -->
+  <h3>{{ person.name }}'s Interests</h3>
+  <div class="subsection-content">
+    {% if person.interests.count %} 
+      {% for interest in person.interests.all %}
+        <div class="interest-container">
+          <a href="{% url 'interest-detail' interest.id %}">
+            <p>{{ interest.name }}</p>
+          </a>
+        </div>
+      {% endfor %} 
+    {% else %}
+      <p class="no-interests">{{person.name}} doesn't have any interests!</p>
+    {% endif %}
+  </div>
+
+ <h3>Available Interests</h3>
+<div class="subsection-content">
+  {% if interests.count %} 
+    {% for interest in interests %}
+      <div class="interest-container">
+        <a href="{% url 'interest-detail' interest.id %}">
+          <p>A {{ interest.color }} {{ interest.name }}</p>
+        </a>
+        <form action="{% url 'associate-interest' person.id interest.id %}" method="post">
+          {% csrf_token %}
+          <button type="submit" class="btn submit">Give interest</button>
+        </form>
+      </div>
+    {% endfor %} 
+  {% else %}
+    <p class="all-interests">{{person.name}} already has all the available interests 🥳</p>
+  {% endif %}
+</div>
+</section>

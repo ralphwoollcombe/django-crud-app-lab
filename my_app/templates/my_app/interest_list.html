@@ -1,0 +1,24 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+<link rel="" href="" />
+{% endblock %} 
+{% block content %}
+
+<section class="page-header">
+  <h1>All Interests</h1>
+</section>
+
+<section class="card-container">
+  {% for interest in interest_list %}
+    <div class="card">
+      <a href="{% url 'interest-detail' interest.id %}">
+        <div class="card-content">
+          <h2>{{ interest.name }}</h2>
+        </div>
+      </a>
+    </div>
+  {% endfor %}
+</section>
+
+{% endblock %}

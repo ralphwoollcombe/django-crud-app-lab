@@ -8,12 +8,6 @@
   <div class="person-details">
     <h1>{{ person.name }}</h1>
     <h2>Lives in {{ person.location }}</h2>
-    <!-- <h3>Shared interests: </h3> 
-    <ul>
-    {% for interest in person.interests %}
-      <li> {{ interest.name }} </li>
-    {% endfor %}
-    </ul> -->
     <p>{{ person.description }}</p>
     <div class="person-actions">
       <a href="{% url 'person-update' person.id %}" class="btn warn">Edit</a>
@@ -22,5 +16,6 @@
   </div>
 </section>
 {% include 'my_app/partials/encounters.html' %}
+{% include 'my_app/partials/interests.html' %}
 
 {% endblock %}

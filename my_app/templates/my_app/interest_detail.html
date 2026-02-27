@@ -1,0 +1,15 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+
+{% endblock %} 
+{% block content %}
+<div class="card">
+  <div class="card-content">
+    <h2>{{ interest.name }}</h2>
+  </div>
+</div>
+<a href="{% url 'interest-update' interest.id %}" class="btn warn">Edit</a>
+<a href="{% url 'interest-delete' interest.id %}" class="btn danger">Delete</a>
+
+{% endblock %}
